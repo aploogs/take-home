@@ -1,25 +1,29 @@
 import React from "react";
-import { ListItem, ListItemText } from "@mui/material";
-
-// const useStyles = makeStyles((theme) => ({
-//   listItem: {
-//     '&:hover': {
-//       // Customize hover state styles here
-//       backgroundColor: theme.palette.primary.main,
-//       color: theme.palette.common.white,
-//     },
-//   },
-// }));
+import { ListItem, ListItemText, Button, Grid } from "@mui/material";
 
 type NavItemProps = {
   text: string;
+  //also I feel like this location prop is necessary but like...maybe it isn't?
+  location?: string;
+  //this hover won't work until I add a mouse event listener function
   hover?: boolean;
+  onClick?: () => void;
 };
 
-const NavItem: React.FC<NavItemProps> = ({ text, hover }) => {
+const NavItem: React.FC<NavItemProps> = ({
+  text,
+  hover,
+  location,
+  onClick,
+}) => {
   return (
     <ListItem>
-      <ListItemText color={hover ? "primary" : "secondary"} primary={text} />
+      <Button style={{ color: hover ? "gray" : "black" }} onClick={onClick}>
+        <ListItemText
+          style={{ color: hover ? "white" : "black" }}
+          primary={text}
+        />
+      </Button>
     </ListItem>
   );
 };

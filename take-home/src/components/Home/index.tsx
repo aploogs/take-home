@@ -2,6 +2,9 @@ import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import NavBar from "../nav-bar";
 
+//we're gonna do a few containers here. one container for each problem I'm writing code for.
+//each problem container will be a distinct component that I wrap in a grid item.
+
 const Home: React.FC = () => {
   return (
     <>
@@ -10,8 +13,14 @@ const Home: React.FC = () => {
           <Grid item>
             <NavBar />
           </Grid>
-          <Grid xl={12} item>
-            <Typography>Here is some text</Typography>
+          <Grid sx={{ backgroundColor: "black" }} item xs={12}>
+            <Typography>problem container 1</Typography>
+          </Grid>
+          <Grid sx={{ backgroundColor: "pink" }} item xs={12}>
+            <Typography>problem container 2</Typography>
+          </Grid>
+          <Grid sx={{ backgroundColor: "blue" }} item xs={12}>
+            <Typography>problem container 3</Typography>
           </Grid>
         </Grid>
       </Box>
