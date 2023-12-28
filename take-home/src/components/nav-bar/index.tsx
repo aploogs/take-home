@@ -28,7 +28,7 @@ const NavBar: React.FC = () => {
               <MenuOutlined />
             </IconButton>
             {sections.map((section, idx) => (
-              <Grid item lg={3}>
+              <Grid key={idx} item lg={3}>
                 <NavItem text={section} key={idx} />
               </Grid>
             ))}
