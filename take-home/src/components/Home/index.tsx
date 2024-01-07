@@ -101,8 +101,8 @@ const Home: React.FC = () => {
             <RootCalculator />
           </Grid>
           <Grid sx={{ backgroundColor: "pink" }} item xs={12}>
-            <ContentBlock onClick={handleFindStonk} />
-            <Ticker onClick={handleFindStonk} symbol={"AMZN"} />
+            {/* <ContentBlock onClick={handleFindStonk} /> */}
+            <Ticker />
           </Grid>
         </Grid>
       </Container>
