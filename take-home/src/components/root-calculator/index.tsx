@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   FormControl,
+  FormHelperText,
   Grid,
   InputLabel,
   MenuItem,
@@ -51,18 +52,8 @@ const RootCalculator: React.FC = () => {
     } else {
       setResult("Please input a number");
     }
-    console.log("trueX", x);
     return x;
   };
-
-  // const adjustPrecision = (precisionValue: number, inputValue: number) => {
-  //   console.log("precision", precisionValue);
-  //   console.log("input", inputValue);
-  //   // if (precisionValue) {
-  //   //   inputValue.slice(0, precisionValue )
-  //   // }
-  //   setPrecisionValue()
-  // };
 
   return (
     <Box>
@@ -94,6 +85,9 @@ const RootCalculator: React.FC = () => {
                 <MenuItem value={9}>9</MenuItem>
                 <MenuItem value={10}>10</MenuItem>
               </Select>
+              <FormHelperText>
+                *Displays full number unless specified
+              </FormHelperText>
             </FormControl>
           </Grid>
           <Grid item>
