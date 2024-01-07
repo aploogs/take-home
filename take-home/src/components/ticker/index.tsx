@@ -1,13 +1,13 @@
 import React from "react";
 // import { restClient } from "@polygon.io/client-js";
-import { Grid, Typography } from "@mui/material";
+import { Grid, TextField, Typography } from "@mui/material";
+import CustomDatePicker from "../date-picker";
+import StockRow from "../stock-row";
 
 type TickerProps = {
   symbol: string;
   onClick?: () => void;
 };
-
-const clients = ["MS", "AMZN", "AAPL"];
 
 const Ticker: React.FC<TickerProps> = ({ symbol, onClick }) => {
   // const [price, setPrice] = React.useState("");
@@ -68,11 +68,32 @@ const Ticker: React.FC<TickerProps> = ({ symbol, onClick }) => {
 
   return (
     <Grid container>
-      {clients.map((client, idx) => (
+      {/* {clients.map((client, idx) => (
         <Grid item xs={4} key={idx}>
           <Typography>{client}</Typography>
         </Grid>
-      ))}
+      ))} */}
+      <Grid item xs={8}>
+        <Typography>
+          Here you can actually choose which stock you'd like to query. Due to
+          API limitations, I can only do up to 3 stocks at a time - but this
+          will give you the open and close price for any stock on whatever day
+          you choose (besides today).
+        </Typography>
+      </Grid>
+      <Grid>
+        <StockRow symbol={"AMZN"} closePrice={34} openPrice={33} />
+      </Grid>
+      <Grid>
+        <StockRow symbol={"MS"} closePrice={34} openPrice={33} />
+      </Grid>
+      <Grid>
+        <StockRow symbol={"AAPL"} closePrice={34} openPrice={33} />
+      </Grid>
+      <CustomDatePicker
+        value={new Date()}
+        onChange={() => console.log("changed")}
+      />
       {/* <p>Price: {price !== null ? `$${price.toFixed(2)}` : "Loading..."}</p> */}
     </Grid>
   );

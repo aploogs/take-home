@@ -2,21 +2,40 @@ import React from "react";
 import { Container, Grid, Typography } from "@mui/material";
 import NavBar from "../nav-bar";
 import { restClient } from "@polygon.io/client-js";
+import { format, isWeekend, subDays } from "date-fns";
 
 import ContentBlock from "../content-blocks";
 import RootCalculator from "../root-calculator";
+import { DatePicker } from "@mui/x-date-pickers";
+import Ticker from "../ticker";
 
-//we're gonna do a few containers here. one container for each problem I'm writing code for.
 //each problem container will be a distinct component that I wrap in a grid item.
 
 const Home: React.FC = () => {
   const [price, setPrice] = React.useState("");
   const [findingPrice, setFindingPrice] = React.useState(false);
+  const today = new Date();
+  //!here is where I would want to sub in a value that the user selects for how many days back they want to see. Right now we are just going to use static values
+  const lastPrice2 = subDays(today, 1);
+
+  console.log("lastPRice", lastPrice2);
+  // const findPrices = () => {};
   const stocks = restClient("3wKdDchqH2CT1WpnzxgfI6zzjN6olsXi").stocks;
 
-  const findAAPL = async () => {
+  // const findStock = async (symbol: string, from: string, to: string) => {
+  //   const allStocks = await stocks.aggregates(
+  //     `${symbol}`,
+  //     1,
+  //     "day",
+  //     //let's look to dynamically pass in a number for the dates as well
+  //     "2023-01-01",
+  //     "2023-01-03"
+  //   );
+  // };
+
+  const findAAPL = async (symbol: string) => {
     const apple = await stocks
-      .aggregates("AAPL", 1, "day", "2023-01-01", "2023-01-03")
+      .aggregates(`${symbol}`, 1, "day", "2023-01-01", "2023-01-03")
       .then((data) => {
         return data;
       })
@@ -25,6 +44,9 @@ const Home: React.FC = () => {
       });
 
     console.log("stocky", apple);
+    //i can find price at last close for the most part, just approximated by one day
+    //so, just pass a new date, minus one day
+    // setPrice()
 
     return apple;
   };
@@ -32,7 +54,7 @@ const Home: React.FC = () => {
   //this is morgan stanley, NOT microsoft
   const findMS = async () => {
     const stockyBoi = await stocks
-      .aggregates("MS", 1, "day", "2023-01-01", "2023-01-03")
+      .aggregates("MS", 1, "day", "2024-01-05", "2024-01-05")
 
       .then((data) => {
         return data;
@@ -61,7 +83,7 @@ const Home: React.FC = () => {
   };
 
   const handleFindStonk = () => {
-    findAAPL();
+    // findAAPL();
     findMS();
     findAMZN();
   };
@@ -80,6 +102,7 @@ const Home: React.FC = () => {
           </Grid>
           <Grid sx={{ backgroundColor: "pink" }} item xs={12}>
             <ContentBlock onClick={handleFindStonk} />
+            <Ticker onClick={handleFindStonk} symbol={"AMZN"} />
           </Grid>
         </Grid>
       </Container>
