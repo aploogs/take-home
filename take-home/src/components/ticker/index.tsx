@@ -1,38 +1,80 @@
-import React, { useEffect, useState } from "react";
-import { stocksClient } from "@polygon.io/client-js";
+import React from "react";
+// import { restClient } from "@polygon.io/client-js";
+import { Grid, Typography } from "@mui/material";
 
-interface TickerProps {
+type TickerProps = {
   symbol: string;
-  apiKey: string;
-}
+  onClick?: () => void;
+};
 
-const Ticker: React.FC<TickerProps> = ({ symbol, apiKey }) => {
-  const [price, setPrice] = useState<number | null>(null);
+const clients = ["MS", "AMZN", "AAPL"];
 
-  // useEffect(() => {
-  //   const stockClient = stocksClient(apiKey);
-  //   const fetchPrice = async () => {
-  //     try {
-  //       const response = await stockClient.getRealTimeQuote(symbol);
-  //       setPrice(response.lastTradePrice);
-  //     } catch (error) {
-  //       console.error('Error fetching stock price:', error);
-  //     }
-  //   };
+const Ticker: React.FC<TickerProps> = ({ symbol, onClick }) => {
+  // const [price, setPrice] = React.useState("");
+  // const [findingPrice, setFindingPrice] = React.useState(false);
+  // const stocks = restClient("3wKdDchqH2CT1WpnzxgfI6zzjN6olsXi").stocks;
 
-  //   fetchPrice();
+  // const findAAPL = async () => {
+  //   const apple = await stocks
+  //     .aggregates("AAPL", 1, "day", "2023-01-01", "2023-01-03")
+  //     .then((data) => {
+  //       return data;
+  //     })
+  //     .catch((e) => {
+  //       console.error("An error happened", e);
+  //     });
 
-  //   // Cleanup function
-  //   return () => {
-  //     // Perform any necessary cleanup here
-  //   };
-  // }, [symbol, apiKey]);
+  //   console.log("stocky", apple);
+
+  //   return apple;
+  // };
+
+  // //this is morgan stanley, NOT microsoft
+  // const findMS = async () => {
+  //   const stockyBoi = await stocks
+  //     .aggregates("MS", 1, "day", "2023-01-01", "2023-01-03")
+
+  //     .then((data) => {
+  //       return data;
+  //     })
+  //     .catch((e) => {
+  //       console.error("An error happened", e);
+  //     });
+
+  //   console.log("stocky2", stockyBoi);
+
+  //   return stockyBoi;
+  // };
+  // const findAMZN = async () => {
+  //   const stockyBoi = await stocks
+  //     .aggregates("AMZN", 1, "day", "2023-01-01", "2023-01-03")
+  //     .then((data) => {
+  //       return data;
+  //     })
+  //     .catch((e) => {
+  //       console.error("An error happened", e);
+  //     });
+
+  //   console.log("stocky3", stockyBoi);
+
+  //   return stockyBoi;
+  // };
+
+  // const handleFindStonk = () => {
+  //   findAAPL();
+  //   findMS();
+  //   findAMZN();
+  // };
 
   return (
-    <div>
-      <h2>{symbol}</h2>
-      <p>Price: {price !== null ? `$${price.toFixed(2)}` : "Loading..."}</p>
-    </div>
+    <Grid container>
+      {clients.map((client, idx) => (
+        <Grid item xs={4} key={idx}>
+          <Typography>{client}</Typography>
+        </Grid>
+      ))}
+      {/* <p>Price: {price !== null ? `$${price.toFixed(2)}` : "Loading..."}</p> */}
+    </Grid>
   );
 };
 
