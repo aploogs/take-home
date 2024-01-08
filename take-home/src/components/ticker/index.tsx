@@ -62,6 +62,7 @@ const Ticker: React.FC<TickerProps> = ({ onClick }) => {
         console.error("an error occurred", e);
       });
     const price = allStocks ? allStocks : 0;
+    // console.log
     // set;
     setFinalClosePrice(price);
     return allStocks;

@@ -21,6 +21,7 @@ const RootCalculator: React.FC = () => {
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
+    setResult("");
   };
 
   const handlePrecisionChange = (event: SelectChangeEvent) => {
@@ -74,7 +75,7 @@ const RootCalculator: React.FC = () => {
             />
           </Grid>
           <Grid item lg={2}>
-            <FormControl sx={{ maxWidth: 120 }} fullWidth>
+            <FormControl sx={{ maxWidth: 170 }} fullWidth>
               <InputLabel>Precision?</InputLabel>
               <Select
                 placeholder="Precision?"
@@ -93,7 +94,7 @@ const RootCalculator: React.FC = () => {
                 <MenuItem value={9}>9</MenuItem>
                 <MenuItem value={10}>10</MenuItem>
               </Select>
-              <FormHelperText>
+              <FormHelperText sx={{ color: "white" }}>
                 *Displays full number unless specified
               </FormHelperText>
             </FormControl>
@@ -101,14 +102,14 @@ const RootCalculator: React.FC = () => {
           <Grid item>
             <Button
               variant="contained"
-              color="primary"
+              sx={{ backgroundColor: "#16A8BE" }}
               onClick={() =>
                 calculateSquareRoot(Number(inputValue), precisionValue)
               }
             >
               Calculate
             </Button>
-            <Typography>{result}</Typography>
+            <Typography className={styles.helperText}>{result}</Typography>
           </Grid>
         </Grid>
       </form>
