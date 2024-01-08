@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, TextField, Typography } from "@mui/material/";
+import styles from "./row.module.scss";
 
 type StockRowProps = {
   symbol: string;
@@ -18,19 +19,23 @@ const StockRow: React.FC<StockRowProps> = ({
 
   return (
     <Grid container>
-      <Grid item lg={3}>
+      <Grid item lg={8}>
         <TextField
           onChange={handleInputChange}
           name={name}
-          sx={{ maxHeight: 40 }}
+          type="text"
+          variant="filled"
+          className={styles.textField}
           error={showError}
           label="Symbol"
           helperText={showError ? "*Too many letters" : null}
           value={symbol}
         />
       </Grid>
-      <Grid item lg={6}>
-        <Typography>{closePrice}</Typography>
+      <Grid item lg={3}>
+        <Typography sx={{ color: "green", fontSize: 24 }}>
+          {closePrice}
+        </Typography>
       </Grid>
     </Grid>
   );

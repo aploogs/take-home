@@ -64,7 +64,7 @@ const RootCalculator: React.FC = () => {
           <Grid sx={{ color: "white" }} item mt={10} mb={25} lg={12}>
             <Typography variant="h4">Square roots to precision</Typography>
           </Grid>
-          <Grid item lg={2}>
+          <Grid item lg={2} sm={8}>
             <TextField
               label="Enter a number"
               variant="filled"
@@ -74,7 +74,7 @@ const RootCalculator: React.FC = () => {
               onChange={handleInputChange}
             />
           </Grid>
-          <Grid item lg={2}>
+          <Grid item lg={2} sm={3}>
             <FormControl sx={{ maxWidth: 170 }} fullWidth>
               <InputLabel>Precision?</InputLabel>
               <Select

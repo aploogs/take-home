@@ -1,5 +1,6 @@
 import React from "react";
 import { DatePicker } from "@mui/x-date-pickers";
+import { Grid } from "@mui/material";
 
 type DatePickerProps = {
   value: Date | null;
@@ -8,11 +9,14 @@ type DatePickerProps = {
 
 const CustomDatePicker: React.FC<DatePickerProps> = ({ value, onChange }) => {
   return (
-    <DatePicker
-      views={["year", "month", "day"]}
-      value={value}
-      onChange={onChange}
-    />
+    <Grid item lg={12}>
+      <DatePicker
+        sx={{ backgroundColor: "white", borderRadius: "5px" }}
+        views={["year", "month", "day"]}
+        value={value}
+        onChange={onChange}
+      />
+    </Grid>
   );
 };
 
