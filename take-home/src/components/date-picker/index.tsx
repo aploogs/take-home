@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { DatePicker } from "@mui/x-date-pickers";
 
 type DatePickerProps = {
@@ -7,18 +7,11 @@ type DatePickerProps = {
 };
 
 const CustomDatePicker: React.FC<DatePickerProps> = ({ value, onChange }) => {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(value);
-
-  const handleDateChange = (date: Date | null) => {
-    setSelectedDate(date);
-    onChange(date);
-  };
-
   return (
     <DatePicker
-      value={selectedDate}
-      onChange={handleDateChange}
-      // renderInput={(params) => <input {...params} />}
+      views={["year", "month", "day"]}
+      value={value}
+      onChange={onChange}
     />
   );
 };

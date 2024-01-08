@@ -4,7 +4,7 @@ import { Grid, TextField, Typography } from "@mui/material/";
 type StockRowProps = {
   symbol: string;
   name: string;
-  closePrice: number;
+  closePrice: string | number;
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
