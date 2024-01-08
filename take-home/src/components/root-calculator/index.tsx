@@ -13,6 +13,7 @@ import {
   Typography,
 } from "@mui/material";
 
+import styles from "./calculator.module.scss";
 const RootCalculator: React.FC = () => {
   const [inputValue, setInputValue] = useState("");
   const [precisionValue, setPrecisionValue] = useState("");
@@ -58,10 +59,16 @@ const RootCalculator: React.FC = () => {
   return (
     <Box>
       <form>
-        <Grid container spacing={2} flexDirection="row">
+        <Grid justifyContent="center" container spacing={2} flexDirection="row">
+          <Grid sx={{ color: "white" }} item mt={10} mb={25} lg={12}>
+            <Typography variant="h4">Square roots to precision</Typography>
+          </Grid>
           <Grid item lg={2}>
             <TextField
               label="Enter a number"
+              variant="filled"
+              className={styles.calculatorInput}
+              type="text"
               value={inputValue}
               onChange={handleInputChange}
             />
@@ -70,7 +77,8 @@ const RootCalculator: React.FC = () => {
             <FormControl sx={{ maxWidth: 120 }} fullWidth>
               <InputLabel>Precision?</InputLabel>
               <Select
-                label="Precision?"
+                placeholder="Precision?"
+                className={styles.calculatorInput}
                 onChange={handlePrecisionChange}
                 value={precisionValue}
               >

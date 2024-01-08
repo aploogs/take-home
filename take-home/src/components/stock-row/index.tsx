@@ -5,7 +5,6 @@ type StockRowProps = {
   symbol: string;
   name: string;
   closePrice: number;
-  openPrice: number;
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -14,24 +13,24 @@ const StockRow: React.FC<StockRowProps> = ({
   handleInputChange,
   name,
   closePrice,
-  openPrice,
 }) => {
-  const returnCaps = symbol.toUpperCase();
+  const showError = symbol.length > 4;
+
   return (
     <Grid container>
-      <Grid item lg={6}>
+      <Grid item lg={3}>
         <TextField
           onChange={handleInputChange}
           name={name}
+          sx={{ maxHeight: 40 }}
+          error={showError}
           label="Symbol"
-          value={returnCaps}
+          helperText={showError ? "*Too many letters" : null}
+          value={symbol}
         />
       </Grid>
-      <Grid item lg={2}>
+      <Grid item lg={6}>
         <Typography>{closePrice}</Typography>
-      </Grid>
-      <Grid item lg={2}>
-        <Typography>{openPrice}</Typography>
       </Grid>
     </Grid>
   );
