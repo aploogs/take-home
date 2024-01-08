@@ -1,29 +1,25 @@
 import React from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import NavBar from "../nav-bar";
 
-//we're gonna do a few containers here. one container for each problem I'm writing code for.
-//each problem container will be a distinct component that I wrap in a grid item.
+import RootCalculator from "../root-calculator";
+import Ticker from "../ticker";
+import styles from "./home.module.scss";
 
 const Home: React.FC = () => {
   return (
     <>
-      <Box>
-        <Grid pt={10} container>
-          <Grid item>
-            <NavBar />
-          </Grid>
-          <Grid sx={{ backgroundColor: "black" }} item xs={12}>
-            <Typography>problem container 1</Typography>
-          </Grid>
-          <Grid sx={{ backgroundColor: "pink" }} item xs={12}>
-            <Typography>problem container 2</Typography>
-          </Grid>
-          <Grid sx={{ backgroundColor: "blue" }} item xs={12}>
-            <Typography>problem container 3</Typography>
-          </Grid>
+      <Grid pt={1} container maxWidth={1600}>
+        <Grid item>
+          <NavBar />
         </Grid>
-      </Box>
+        <Grid className={styles.calculator} item lg={12}>
+          <RootCalculator />
+        </Grid>
+        <Grid className={styles.ticker} item lg={12}>
+          <Ticker />
+        </Grid>
+      </Grid>
     </>
   );
 };
