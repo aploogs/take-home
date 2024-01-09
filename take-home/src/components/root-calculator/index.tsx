@@ -99,7 +99,7 @@ const RootCalculator: React.FC = () => {
               </FormHelperText>
             </FormControl>
           </Grid>
-          <Grid item>
+          <Grid item sm={2}>
             <Button
               variant="contained"
               sx={{ backgroundColor: "#16A8BE" }}

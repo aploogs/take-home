@@ -32,8 +32,8 @@ const StockRow: React.FC<StockRowProps> = ({
           value={symbol}
         />
       </Grid>
-      <Grid item lg={2}>
-        <Typography sx={{ color: "green", fontSize: 24, fontWeight: 600 }}>
+      <Grid item sm={1} lg={2}>
+        <Typography sx={{ color: "green", fontSize: 28, fontWeight: 600 }}>
           {closePrice}
         </Typography>
       </Grid>
