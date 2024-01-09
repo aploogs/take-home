@@ -25,9 +25,6 @@ const RootCalculator: React.FC = () => {
   };
 
   const handlePrecisionChange = (event: SelectChangeEvent) => {
-    //i have a number for the precision
-    //I have a number to be rooted
-    // so I need to take the number that is rooted, and then use the number for precision to limit the rooted number
     let precision = event.target;
     setPrecisionValue(precision.value);
     setResult("");
