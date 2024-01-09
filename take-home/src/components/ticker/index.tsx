@@ -140,10 +140,10 @@ const Ticker: React.FC<TickerProps> = ({ onClick }) => {
       <form>
         <Grid container spacing={4}>
           <Grid sx={{ color: "white" }} item mt={4} mb={2} ml={12} lg={10}>
-            <Typography variant="h4">Stocks!</Typography>
+            <Typography variant="h4">Stocks at close!</Typography>
           </Grid>
           <Grid item ml={12} lg={10}>
-            <Typography>
+            <Typography sx={{ color: "white" }}>
               Here you can actually choose which stock you'd like to query. Due
               to API limitations, please limit queries to prices from the
               previous 2 years (not today). Also, only 5 calls can be made per

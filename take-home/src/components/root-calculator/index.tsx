@@ -79,7 +79,7 @@ const RootCalculator: React.FC = () => {
               <InputLabel>Precision?</InputLabel>
               <Select
                 placeholder="Precision?"
-                className={styles.calculatorInput}
+                className={styles.InputLabel}
                 onChange={handlePrecisionChange}
                 value={precisionValue}
               >
