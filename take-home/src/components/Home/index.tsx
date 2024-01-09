@@ -9,7 +9,7 @@ import styles from "./home.module.scss";
 const Home: React.FC = () => {
   return (
     <>
-      <Grid pt={1} container maxWidth={1600}>
+      <Grid pt={1} container maxWidth={1900}>
         <Grid item>
           <NavBar />
         </Grid>

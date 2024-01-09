@@ -25,9 +25,6 @@ const RootCalculator: React.FC = () => {
   };
 
   const handlePrecisionChange = (event: SelectChangeEvent) => {
-    //i have a number for the precision
-    //I have a number to be rooted
-    // so I need to take the number that is rooted, and then use the number for precision to limit the rooted number
     let precision = event.target;
     setPrecisionValue(precision.value);
     setResult("");
@@ -79,7 +76,7 @@ const RootCalculator: React.FC = () => {
               <InputLabel>Precision?</InputLabel>
               <Select
                 placeholder="Precision?"
-                className={styles.calculatorInput}
+                className={styles.InputLabel}
                 onChange={handlePrecisionChange}
                 value={precisionValue}
               >
@@ -99,7 +96,7 @@ const RootCalculator: React.FC = () => {
               </FormHelperText>
             </FormControl>
           </Grid>
-          <Grid item>
+          <Grid item sm={2}>
             <Button
               variant="contained"
               sx={{ backgroundColor: "#16A8BE" }}

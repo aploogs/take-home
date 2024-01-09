@@ -1,25 +1,16 @@
 import React from "react";
 // import { restClient } from "@polygon.io/client-js";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Alert, Box, Button, Grid, Typography } from "@mui/material";
 import CustomDatePicker from "../date-picker";
 import StockRow from "../stock-row";
 import { restClient } from "@polygon.io/client-js";
 import { format, parse } from "date-fns";
 
-type TickerProps = {
-  onClick?: () => void;
-};
-
 const dateFormat = "yyyy/MM/dd";
 const today = format(new Date(), dateFormat);
 const referenceDate = new Date(1970, 0, 1, 0, 0, 0);
 
-//!!things to fix-
-//?shared state between the closing price for each ticker. tied to the issue I'm having with state anyway
-//?styling
-//?date-picker
-
-const Ticker: React.FC<TickerProps> = ({ onClick }) => {
+const Ticker: React.FC = () => {
   const [date, setDate] = React.useState(today);
 
   const [symbol, setSymbol] = React.useState({
@@ -57,7 +48,6 @@ const Ticker: React.FC<TickerProps> = ({ onClick }) => {
 
   const handleDateChange = (date: any) => {
     let formattedDateString = format(date, dateFormat);
-    console.log({ formattedDateString });
     setDate(formattedDateString);
   };
 
@@ -78,7 +68,7 @@ const Ticker: React.FC<TickerProps> = ({ onClick }) => {
         return closePrice;
       })
       .catch((e) => {
-        console.error("an error occurred", e);
+        alert(e);
       });
     const price = allStocks ? allStocks : 0;
     setFinalClosePrice(price);
@@ -100,7 +90,7 @@ const Ticker: React.FC<TickerProps> = ({ onClick }) => {
         return closePrice;
       })
       .catch((e) => {
-        console.error("an error occurred", e);
+        alert(e);
       });
     const price = allStocks ? allStocks : 0;
     setFinalClosePrice2(price);
@@ -122,7 +112,7 @@ const Ticker: React.FC<TickerProps> = ({ onClick }) => {
         return closePrice;
       })
       .catch((e) => {
-        console.error("an error occurred", e);
+        alert(e);
       });
     const price = allStocks ? allStocks : 0;
     setFinalClosePrice3(price);
@@ -140,10 +130,10 @@ const Ticker: React.FC<TickerProps> = ({ onClick }) => {
       <form>
         <Grid container spacing={4}>
           <Grid sx={{ color: "white" }} item mt={4} mb={2} ml={12} lg={10}>
-            <Typography variant="h4">Stocks!</Typography>
+            <Typography variant="h4">Stocks at close!</Typography>
           </Grid>
           <Grid item ml={12} lg={10}>
-            <Typography>
+            <Typography sx={{ color: "white" }}>
               Here you can actually choose which stock you'd like to query. Due
               to API limitations, please limit queries to prices from the
               previous 2 years (not today). Also, only 5 calls can be made per
@@ -174,7 +164,7 @@ const Ticker: React.FC<TickerProps> = ({ onClick }) => {
               closePrice={finalClosePrice3}
             />
           </Grid>{" "}
-          <Grid item ml={3} lg={6}>
+          <Grid item ml={3} sm={4} lg={6}>
             <CustomDatePicker value={datefnsDate} onChange={handleDateChange} />
           </Grid>
           <Grid item pr={5} lg={6}>
