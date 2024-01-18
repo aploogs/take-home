@@ -7,7 +7,6 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 import RootCalculator from "../root-calculator";
 import Ticker from "../ticker";
-import styles from "../../styles/home.module.scss";
 
 const Home: React.FC = () => {
   return (
@@ -17,10 +16,10 @@ const Home: React.FC = () => {
           <Grid item>
             <NavBar />
           </Grid>
-          <Grid className={styles.calculator} item lg={12}>
+          <Grid item lg={12}>
             <RootCalculator />
           </Grid>
-          <Grid className={styles.ticker} item lg={12}>
+          <Grid item lg={12}>
             <Ticker />
           </Grid>
         </Grid>

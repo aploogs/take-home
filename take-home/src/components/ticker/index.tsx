@@ -1,6 +1,5 @@
 import React from "react";
-// import { restClient } from "@polygon.io/client-js";
-import { Alert, Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import CustomDatePicker from "../date-picker";
 import StockRow from "../stock-row";
 import { restClient } from "@polygon.io/client-js";
