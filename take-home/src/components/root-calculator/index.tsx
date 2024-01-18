@@ -13,6 +13,8 @@ import {
   Typography,
 } from "@mui/material";
 import Image from "next/image";
+import { TickerBackground } from "../backgrounds/ticker-backround";
+import { Background } from "../backgrounds/background";
 
 const RootCalculator: React.FC = () => {
   const [inputValue, setInputValue] = useState("");
@@ -56,6 +58,7 @@ const RootCalculator: React.FC = () => {
 
   return (
     <>
+      {/* <Background /> */}
       <Box>
         <form>
           <Grid
@@ -115,12 +118,12 @@ const RootCalculator: React.FC = () => {
           </Grid>
         </form>
       </Box>
-      <Image
+      {/* <Image
         alt="Stock Ticker Background"
         src={`/ticker-background.jpg)`}
         width={1800}
         height={900}
-      />
+      /> */}
     </>
   );
 };
