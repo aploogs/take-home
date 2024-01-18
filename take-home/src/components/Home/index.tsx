@@ -7,7 +7,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 import RootCalculator from "../root-calculator";
 import Ticker from "../ticker";
-import styles from "./styles/home.module.scss";
+import styles from "../../styles/home.module.scss";
 
 const Home: React.FC = () => {
   return (
