@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid, TextField, Typography } from "@mui/material/";
-import styles from "./row.module.scss";
 
 type StockRowProps = {
   symbol: string;
@@ -25,7 +24,10 @@ const StockRow: React.FC<StockRowProps> = ({
           name={name}
           type="text"
           variant="filled"
-          className={styles.textField}
+          sx={{
+            backgroundColor: "white",
+            borderRadius: "5px",
+          }}
           error={showError}
           label="Symbol"
           helperText={showError ? "*Too many letters" : null}

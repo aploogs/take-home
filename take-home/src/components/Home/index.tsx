@@ -1,10 +1,11 @@
+"use client";
 import React from "react";
 import { Grid } from "@mui/material";
 import NavBar from "../nav-bar";
+import "../../styles/home.module.scss";
 
 import RootCalculator from "../root-calculator";
 import Ticker from "../ticker";
-import styles from "./home.module.scss";
 
 const Home: React.FC = () => {
   return (
@@ -13,10 +14,10 @@ const Home: React.FC = () => {
         <Grid item>
           <NavBar />
         </Grid>
-        <Grid className={styles.calculator} item lg={12}>
+        <Grid item className="calculator" lg={12}>
           <RootCalculator />
         </Grid>
-        <Grid className={styles.ticker} item lg={12}>
+        <Grid item className="ticker" lg={12}>
           <Ticker />
         </Grid>
       </Grid>

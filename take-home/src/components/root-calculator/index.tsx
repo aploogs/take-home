@@ -12,8 +12,10 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import Image from "next/image";
+import { TickerBackground } from "../backgrounds/ticker-backround";
+import { Background } from "../backgrounds/background";
 
-import styles from "./calculator.module.scss";
 const RootCalculator: React.FC = () => {
   const [inputValue, setInputValue] = useState("");
   const [precisionValue, setPrecisionValue] = useState("");
@@ -55,62 +57,74 @@ const RootCalculator: React.FC = () => {
   };
 
   return (
-    <Box>
-      <form>
-        <Grid justifyContent="center" container spacing={2} flexDirection="row">
-          <Grid sx={{ color: "white" }} item mt={10} mb={25} lg={12}>
-            <Typography variant="h4">Square roots to precision</Typography>
-          </Grid>
-          <Grid item lg={2} sm={8}>
-            <TextField
-              label="Enter a number"
-              variant="filled"
-              className={styles.calculatorInput}
-              type="text"
-              value={inputValue}
-              onChange={handleInputChange}
-            />
-          </Grid>
-          <Grid item lg={2} sm={3}>
-            <FormControl sx={{ maxWidth: 170 }} fullWidth>
-              <InputLabel>Precision?</InputLabel>
-              <Select
-                placeholder="Precision?"
-                className={styles.InputLabel}
-                onChange={handlePrecisionChange}
-                value={precisionValue}
+    <>
+      {/* <Background /> */}
+      <Box>
+        <form>
+          <Grid
+            justifyContent="center"
+            container
+            spacing={2}
+            flexDirection="row"
+          >
+            <Grid sx={{ color: "white" }} item mt={10} mb={25} lg={12}>
+              <Typography variant="h4">Square roots to precision</Typography>
+            </Grid>
+            <Grid item lg={2} sm={8}>
+              <TextField
+                label="Enter a number"
+                variant="filled"
+                type="text"
+                value={inputValue}
+                onChange={handleInputChange}
+              />
+            </Grid>
+            <Grid item lg={2} sm={3}>
+              <FormControl sx={{ maxWidth: 170 }} fullWidth>
+                <InputLabel>Precision?</InputLabel>
+                <Select
+                  placeholder="Precision?"
+                  onChange={handlePrecisionChange}
+                  value={precisionValue}
+                >
+                  <MenuItem value={1}>1</MenuItem>
+                  <MenuItem value={2}>2</MenuItem>
+                  <MenuItem value={3}>3</MenuItem>
+                  <MenuItem value={4}>4</MenuItem>
+                  <MenuItem value={5}>5</MenuItem>
+                  <MenuItem value={6}>6</MenuItem>
+                  <MenuItem value={7}>7</MenuItem>
+                  <MenuItem value={8}>8</MenuItem>
+                  <MenuItem value={9}>9</MenuItem>
+                  <MenuItem value={10}>10</MenuItem>
+                </Select>
+                <FormHelperText sx={{ color: "white" }}>
+                  *Displays full number unless specified
+                </FormHelperText>
+              </FormControl>
+            </Grid>
+            <Grid item sm={2}>
+              <Button
+                variant="contained"
+                sx={{ backgroundColor: "#16A8BE" }}
+                onClick={() =>
+                  calculateSquareRoot(Number(inputValue), precisionValue)
+                }
               >
-                <MenuItem value={1}>1</MenuItem>
-                <MenuItem value={2}>2</MenuItem>
-                <MenuItem value={3}>3</MenuItem>
-                <MenuItem value={4}>4</MenuItem>
-                <MenuItem value={5}>5</MenuItem>
-                <MenuItem value={6}>6</MenuItem>
-                <MenuItem value={7}>7</MenuItem>
-                <MenuItem value={8}>8</MenuItem>
-                <MenuItem value={9}>9</MenuItem>
-                <MenuItem value={10}>10</MenuItem>
-              </Select>
-              <FormHelperText sx={{ color: "white" }}>
-                *Displays full number unless specified
-              </FormHelperText>
-            </FormControl>
+                Calculate
+              </Button>
+              <Typography>{result}</Typography>
+            </Grid>
           </Grid>
-          <Grid item sm={2}>
-            <Button
-              variant="contained"
-              sx={{ backgroundColor: "#16A8BE" }}
-              onClick={() =>
-                calculateSquareRoot(Number(inputValue), precisionValue)
-              }
-            >
-              Calculate
-            </Button>
-            <Typography className={styles.helperText}>{result}</Typography>
-          </Grid>
-        </Grid>
-      </form>
-    </Box>
+        </form>
+      </Box>
+      {/* <Image
+        alt="Stock Ticker Background"
+        src={`/ticker-background.jpg)`}
+        width={1800}
+        height={900}
+      /> */}
+    </>
   );
 };
 

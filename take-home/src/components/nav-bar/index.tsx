@@ -1,12 +1,11 @@
 import SsidChartIcon from "@mui/icons-material/SsidChart";
 import { AppBar, Toolbar, Grid, Icon, Typography } from "@mui/material";
 import React from "react";
-import styles from "./nav-bar.module.scss";
 
 const NavBar: React.FC = () => {
   return (
     <AppBar>
-      <Toolbar className={styles.toolbar}>
+      <Toolbar sx={{ backgroundColor: "#16A8BE" }}>
         <Grid item lg={1}>
           <Icon component={SsidChartIcon} />
         </Grid>
